@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: get version
+        run: |
+          VER=$(cat VERSION)
+          echo "VERSION=$VER" >> $GITHUB_ENV
       - name: check repository
         uses: actions/checkout@v4
 
@@ -27,4 +31,6 @@ jobs:
         with:
           context: ./
           push: true
-          tags: codingmitschl/exhibitions:latest
+          tags: |
+            codingmitschl/exhibitions:latest
+            codingmitschl/exhibitions:${{ env.VERSION }}
