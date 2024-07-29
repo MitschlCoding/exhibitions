@@ -1,5 +1,14 @@
+"""This module contains the configuration of the objects apps admin backend."""
+
 from django.contrib import admin
-from objects.models import Exhibition, Object, ObjectDetailSection, ObjectDetailSectionText, ObjectDetailSectionImage
+
+from objects.models import (
+    Exhibition,
+    Object,
+    ObjectDetailSection,
+    ObjectDetailSectionImage,
+    ObjectDetailSectionText,
+)
 
 # Register your models here.
 
