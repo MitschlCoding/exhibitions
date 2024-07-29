@@ -1,6 +1,7 @@
 [MASTER]
 load-plugins=pylint_django
 django-settings-module=django_test.settings
+disable=C0415
 
 [FORMAT]
 max-line-length=120
