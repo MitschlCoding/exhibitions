@@ -1,0 +1,68 @@
+<a href="/object/{{object.pk}}/">
+    <div class="card">
+        <div class="card-info">
+            <p>{{object.description}}</p>
+        </div>
+        <div class="card-foreground"></div>
+        <p class="card-title">{{object.name}}</p>
+        <img class="card-image" src="{{object.card_image.url}}" alt="{{object.name}}">
+    </div>
+</a>
+
+<script>
+    console.log("{{object.card_image.url}}")
+</script>
+
+<style>
+    .card-title {
+        position: absolute;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        bottom: -18px;
+        left: 0px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 8px 16px;
+        border-radius: 0px 16px 0px 0px;
+        transition: 0.3s;
+    }
+    .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .card-foreground {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        transition: 0.3s;
+    }
+    .card-info {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        z-index: 1;
+        color: white;
+        font-size: 14px;
+        opacity: 0;
+        transition: 0.3s;
+    }
+    .card {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+    }
+    .card:hover > .card-info {
+        opacity: 1;
+    }
+    .card:hover > .card-foreground {
+        background: rgba(0, 0, 0, 0.85);
+    }
+    .card:hover > .card-title {
+        opacity: 0;
+    }
+</style>

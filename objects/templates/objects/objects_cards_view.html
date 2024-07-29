@@ -1,0 +1,14 @@
+<div class="card-container">
+{% for object in objects %}
+    {% include "objects/object_card.html" %}
+{% endfor %}
+</div>
+
+<style>
+    .card-container {
+        display: grid;
+        /* make grid with 3 columns all same size */
+        grid-template-columns: repeat(4, 1fr);
+        width: fit-content;
+    }
+</style>

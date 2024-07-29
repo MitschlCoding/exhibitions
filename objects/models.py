@@ -1,0 +1,66 @@
+from django.db import models
+
+# Create your models here.
+
+class Exhibition(models.Model):
+    name = models.CharField(max_length=100)
+    subline = models.CharField(max_length=100)
+    description_headline = models.CharField(max_length=100)
+    description = models.TextField()
+    banner_image = models.ImageField(upload_to="images/")
+    description_image = models.ImageField(upload_to="images/", default=None, null=True)
+    accent_color = models.CharField(max_length=7)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class Object(models.Model):
+    exhibition = models.ForeignKey(Exhibition, on_delete=models.CASCADE, default=None, null=True)
+    name = models.CharField(max_length=100)
+    subline = models.CharField(max_length=100)
+    banner_image = models.ImageField(upload_to="images/", default=None, null=True)
+    description = models.TextField()
+    card_image = models.ImageField(upload_to="images/")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+class ObjectDetailSection(models.Model):
+    object_detail_page = models.ForeignKey(Object, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    pos = models.IntegerField(default=0)
+    class Template(models.TextChoices):
+        TEXT = "TEXT", "Text"
+        IMAGE = "IMAGE", "Image"
+        IMAGE_TEXT = "IMAGE_TEXT", "Image and Text"
+        TEXT_IMAGE = "TEXT_IMAGE", "Text and Image"
+        TEXT_ON_IMAGE = "TEXT_ON_IMAGE", "Text on Image"
+        IMAGE_SLIDER = "IMAGE_SLIDER", "Image Slider"
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+class ObjectDetailSectionText(models.Model):
+    object_detail_section = models.ForeignKey(ObjectDetailSection, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.text
+
+class ObjectDetailSectionImage(models.Model):
+    object_detail_section = models.ForeignKey(ObjectDetailSection, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="images/")
+    alt_text = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.alt_text

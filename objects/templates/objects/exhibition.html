@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{exhibition.name}}</title>
+    <!-- TODO: Download font and not call from google api -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Dosis:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="body">
+    <div class="headline-container">
+        <div class="headline-text-container">
+            <h1 class="headline">{{exhibition.name}}</h1>
+            <div class="headline-decoration"></div>
+            <p class="subline">{{exhibition.subline}}</p>
+        </div>
+    </div>
+    <div class="description-container">
+        <div class="description-text-container">
+            <h1 class="description-headline">{{exhibition.description_headline}}</h1>
+            <div class="description-headline-decoration"></div>
+            <p class="description-text">{{exhibition.description | linebreaksbr}}</p>
+        </div>
+    </div>
+    {% include "objects/objects_cards_view.html" %}
+</body>
+<style>
+    .body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #0C0E0E;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+    .body::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+    .headline-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        color: white;
+        background-image: url("{{exhibition.banner_image.url}}");
+        background-size: cover;
+    }
+    .headline-text-container {
+        width: fit-content;
+        height: fit-content;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        margin: 70px;
+    }
+    .headline-decoration {
+        width: 200px;
+        height: 5px;
+        background: {{exhibition.accent_color}};
+    }
+    .headline {
+        margin: 0px;
+        font-size: 64px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-after: 0px;
+    }
+    .subline {
+        margin: 10px 0px 0px 0px;
+        font-weight: 300;
+        font-size: 24px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-after: 0px;
+    }
+    .description-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        color: white;
+        background-image: url("{{exhibition.description_image.url}}");
+        background-size: cover;
+    }
+    .description-text-container {
+        width: 40%;
+        height: fit-content;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        margin: 70px;
+    }
+    .description-headline-decoration {
+        width: 200px;
+        height: 5px;
+        background: {{exhibition.accent_color}};
+    }
+    .description-headline {
+        margin: 0px;
+        font-size: 32px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-after: 0px;
+    }
+    .description-text {
+        margin: 10px 0px 0px 0px;
+        font-weight: 300;
+        font-size: 20px;
+        -webkit-margin-before: 0px;
+        -webkit-margin-after: 0px;
+    }
+</style>
+</html> 
