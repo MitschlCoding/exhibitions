@@ -14,8 +14,9 @@ jobs:
 
     steps:
       - name: get version
+        id: version
         run: |
-          VER=$(cat ./VERSION)
+          VER=$(cat VERSION)
           echo "VERSION=$VER" >> $GITHUB_ENV
       - name: check repository
         uses: actions/checkout@v4
@@ -29,7 +30,7 @@ jobs:
       - name: build and push docker image to registry
         uses: docker/build-push-action@v5
         with:
-          context: ./
+          context: .
           push: true
           tags: |
             codingmitschl/exhibitions:latest
