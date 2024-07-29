@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: get version
         run: |
-          VER=$(cat VERSION)
+          VER=$(cat ./VERSION)
           echo "VERSION=$VER" >> $GITHUB_ENV
       - name: check repository
         uses: actions/checkout@v4
