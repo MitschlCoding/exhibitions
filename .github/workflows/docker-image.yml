@@ -27,4 +27,4 @@ jobs:
         with:
           context: DockerFileFolder/
           push: true
-          tags: black1512/demo1:latest
+          tags: codingmitschl/exhibitions:latest
