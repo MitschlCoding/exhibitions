@@ -1,4 +1,5 @@
 static
+files
 .gitignore
 .pylintrc
 db.sqlite3

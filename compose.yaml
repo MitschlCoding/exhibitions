@@ -1,9 +1,9 @@
 services:
   web:
     image: codingmitschl/exhibitions:latest
-    build: .
     volumes:
-      - .:/app
+      - static-data:/app/static
+      - media-data:/app/files
   web-migrate:
     extends:
       service: web
@@ -22,3 +22,7 @@ services:
       - DEBUG=False
       - SECRET_KEY=secret
       - ALLOWED_HOSTS=0.0.0.0,localhost
+
+volumes:
+  static-data:
+  media-data:
