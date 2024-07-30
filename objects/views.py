@@ -7,7 +7,6 @@ from objects.models import Exhibition, Object
 
 # Create your views here.
 
-
 def exhibition_view(request, exhibition_id):
     """View for an exhibition page."""
     exhibition = Exhibition.objects.get(pk=exhibition_id)
