@@ -1,28 +1,32 @@
 services:
   web:
     image: codingmitschl/exhibitions:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - static-data:/app/static
-      - media-data:/app/files
+      - ./static:/static
   web-migrate:
     extends:
       service: web
     command: python manage.py migrate
+    volumes:
+      - ./static:/static
   web-collectstatic:
     extends:
       service: web
     command: python manage.py collectstatic --noinput
+    volumes:
+      - ./static:/static
   web-run:
     extends:
       service: web
     command: gunicorn django_test.wsgi --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
+    volumes:
+      - ./static:/static
     environment:
       - DEBUG=False
       - SECRET_KEY=secret
       - ALLOWED_HOSTS=0.0.0.0,localhost
-
-volumes:
-  static-data:
-  media-data:
