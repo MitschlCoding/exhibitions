@@ -1,0 +1,9 @@
+static
+.gitignore
+.pylintrc
+db.sqlite3
+.env
+compose.yaml
+Makefile
+VERSION
+.dockerignore
